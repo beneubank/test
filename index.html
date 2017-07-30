@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kingdom Hearts soundboard</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      background: url('background.gif') center center;
+    }
+
+    body {
+      font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      line-height: 1;
+      text-align: center;
+      color: #8181B2;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+      @media screen and ( max-width: 700px ) {
+        .container {
+          padding: 2rem;
+          align-content: center;
+        }
+      }
+
+      @media screen and ( min-width: 700px ) {
+        .container {
+          justify-content: center;
+        }
+      }
+
+    .row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media screen and ( min-width: 700px ) {
+      .row {
+        position: relative;
+        left: -2.5rem;
+        flex-wrap: nowrap;
+        margin: 0 auto 1rem auto;
+      }
+    }
+
+    @media screen and ( min-width: 700px ) {
+      .row + .row {
+        padding-left: 5rem;
+      }
+    }
+
+    @media screen and ( min-width: 700px ) {
+      .row + .row + .row {
+        margin-bottom: 0;
+        padding-left: 10rem;
+      }
+    }
+
+    .key-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 5rem;
+      height: 5rem;
+      margin: 0 1rem 0 0;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+      border-radius: 4px;
+      transition: all 0.17s ease-in-out;
+      cursor: pointer;
+    }
+
+      .key-container:hover {
+        box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+      }
+
+      .key-container:hover.--playing {
+        box-shadow: 0 4px 0 rgba(0,0,0,0.2), 0 0 25px 5px #8181B2;
+      }
+
+      @media screen and ( max-width: 700px ) {
+        .key-container {
+          margin-bottom: 1rem;
+        }
+      }
+
+      @media screen and ( min-width: 800px ) {
+        .key-container {
+          width: 6rem;
+          height: 6rem;
+        }
+      }
+
+      @media screen and ( min-width: 900px ) {
+        .key-container {
+          width: 7rem;
+          height: 7rem;
+        }
+      }
+
+      @media screen and ( min-width: 1000px ) {
+        .key-container {
+          width: 8rem;
+          height: 8rem;
+        }
+      }
+
+
+      .row .key-container:last-of-type {
+        margin-right: 0;
+      }
+
+      .--playing {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px 5px #8181B2;
+      }
+
+    .sound-key {
+      position: relative;
+      top: -5px;
+      font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 1.5rem;
+    }
+
+      @media screen and ( min-width: 900px ) {
+        .sound-key {
+          font-size: 4rem;
+        }
+      }
+
+    .sound-description {
+      font-size: 0.7rem;
+    }
+
+      @media screen and ( max-width: 700px ) {
+        .sound-description {
+          display: block;
+        }
+      }
+
+      @media screen and ( min-width: 900px ) {
+        .sound-description {
+          font-size: 0.9rem;
+        }
+      }
+
+  </style>
+</head>
+<body class="container">
+
+  <div class="row">
+    <div data-key="81" class="key-container">
+      <kbd class="sound-key">Q</kbd>
+      <span class="sound-description">back</span>
+    </div>
+
+    <div data-key="87" class="key-container">
+      <kbd class="sound-key">W</kbd>
+      <span class="sound-description">cancel</span>
+    </div>
+
+    <div data-key="69" class="key-container">
+      <kbd class="sound-key">E</kbd>
+      <span class="sound-description">select</span>
+    </div>
+
+    <div data-key="82" class="key-container">
+      <kbd class="sound-key">R</kbd>
+      <span class="sound-description">item get</span>
+    </div>
+
+    <div data-key="84" class="key-container">
+      <kbd class="sound-key">T</kbd>
+      <span class="sound-description">null</span>
+    </div>
+
+    <div data-key="89" class="key-container">
+      <kbd class="sound-key">Y</kbd>
+      <span class="sound-description">select</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div data-key="65" class="key-container">
+      <kbd class="sound-key">A</kbd>
+      <span class="sound-description">save</span>
+    </div>
+    <div data-key="83" class="key-container">
+      <kbd class="sound-key">S</kbd>
+      <span class="sound-description">confirm</span>
+    </div>
+    <div data-key="68" class="key-container">
+      <kbd class="sound-key">D</kbd>
+      <span class="sound-description">Hikari</span>
+    </div>
+    <div data-key="70" class="key-container">
+      <kbd class="sound-key">F</kbd>
+      <span class="sound-description">Passion</span>
+    </div>
+    <div data-key="71" class="key-container">
+      <kbd class="sound-key">G</kbd>
+      <span class="sound-description">Destati (high)</span>
+    </div>
+    <div data-key="72" class="key-container">
+      <kbd class="sound-key">H</kbd>
+      <span class="sound-description">Destati (low)</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div data-key="90" class="key-container">
+      <kbd class="sound-key">Z</kbd>
+      <span class="sound-description">Okay!</span>
+    </div>
+    <div data-key="88" class="key-container">
+      <kbd class="sound-key">X</kbd>
+      <span class="sound-description">Take this!</span>
+    </div>
+    <div data-key="67" class="key-container">
+      <kbd class="sound-key">C</kbd>
+      <span class="sound-description">Hyuck</span>
+    </div>
+    <div data-key="86" class="key-container">
+      <kbd class="sound-key">V</kbd>
+      <span class="sound-description">Oh boy!</span>
+    </div>
+    <div data-key="66" class="key-container">
+      <kbd class="sound-key">B</kbd>
+      <span class="sound-description">Axel&hellip;</span>
+    </div>
+    <div data-key="78" class="key-container">
+      <kbd class="sound-key">N</kbd>
+      <span class="sound-description">Got it memorized?</span>
+    </div>
+  </div>
+
+  <audio data-key="81" src="sounds/menu__back-1.wav"></audio>
+  <audio data-key="87" src="sounds/menu__back-2.wav"></audio>
+  <audio data-key="69" src="sounds/menu__confirm.wav"></audio>
+  <audio data-key="82" src="sounds/menu__item.wav"></audio>
+  <audio data-key="84" src="sounds/menu__no.wav"></audio>
+  <audio data-key="89" src="sounds/menu__select.wav"></audio>
+
+  <audio data-key="65" src="sounds/menu__save.wav"></audio>
+  <audio data-key="83" src="sounds/menu__yes.wav"></audio>
+  <audio data-key="68" src="sounds/music__hikari.wav"></audio>
+  <audio data-key="70" src="sounds/music__passion.wav"></audio>
+  <audio data-key="71" src="sounds/music__destati--mid.wav"></audio>
+  <audio data-key="72" src="sounds/music__destati.wav"></audio>
+
+  <audio data-key="90" src="sounds/sora__okay.wav"></audio>
+  <audio data-key="88" src="sounds/sora__take-this.wav"></audio>
+  <audio data-key="67" src="sounds/goofy__hyuck.wav"></audio>
+  <audio data-key="86" src="sounds/donald__ohboy.wav"></audio>
+  <audio data-key="66" src="sounds/roxas__axel.wav"></audio>
+  <audio data-key="78" src="sounds/axel__got-it-memorized.wav"></audio>
+
+<script>
+/*
+ * Wes Bos Javascript30
+ * Lesson 01: Drum Kit
+ *
+ * Solution code implementing `click` as well as `keydown`
+ * from engineerwithoutfear @ codepen
+ * https://codepen.io/engineerwithoutfear/details/xgRRVv/
+ */
+
+function playSound(key, type) {
+  const charCode = getCharCode(key, type);
+  const soundClip = document.querySelector('audio[data-key="' + charCode + '"]');
+  if (!soundClip) return;
+  const currentDiv = '[data-key="' + charCode + '"]';
+  document.querySelector(currentDiv).classList.add('--playing');
+  soundClip.currentTime = 0;
+  soundClip.play();
+}
+
+// get the keycode from a keypress or click
+function getCharCode(key, type) {
+  if (type == "click") {
+    return clickSoundClip(key);
+  } else if (type == "press") {
+    return pressSoundClip(key);
+  }
+}
+
+function pressSoundClip(key) {
+  const keyCode = key.keyCode;
+  return keyCode;
+}
+
+function clickSoundClip(key) {
+  const keyCode = key.path[1].getAttribute("data-key");
+  return keyCode;
+}
+
+function removeClass(event) {
+  if (event.propertyName !== "transform") {
+    return;
+  } else {
+    event.target.classList.remove("--playing");
+  }
+}
+
+const keypad = Array.from(document.querySelectorAll(".key-container"));
+keypad.forEach(function (key) {
+  return key.addEventListener("transitionend", removeClass);
+});
+
+// Add an event listener to the entire window that listens for a keypress or click
+window.addEventListener("keydown", function (key) {
+  const type = "press";
+  playSound(key, type);
+});
+
+window.addEventListener("click", function (key) {
+  const type = "click";
+  playSound(key, type);
+});
+
+</script>
+
+</body>
+</html>

@@ -301,64 +301,27 @@
  * Wes Bos Javascript30
  * Lesson 01: Drum Kit
  *
- * Solution code implementing `click` as well as `keydown`
- * from engineerwithoutfear @ codepen
- * https://codepen.io/engineerwithoutfear/details/xgRRVv/
  */
 
-function playSound(key, type) {
-  const charCode = getCharCode(key, type);
-  const soundClip = document.querySelector('audio[data-key="' + charCode + '"]');
-  if (!soundClip) return;
-  const currentDiv = '[data-key="' + charCode + '"]';
-  document.querySelector(currentDiv).classList.add('--playing');
-  soundClip.currentTime = 0;
-  soundClip.play();
-}
+   function playSound(e) {
+     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+     const key = document.querySelector(`div.key-container[data-key="${e.keyCode}"]`);
 
-// get the keycode from a keypress or click
-function getCharCode(key, type) {
-  if (type == "click") {
-    return clickSoundClip(key);
-  } else if (type == "press") {
-    return pressSoundClip(key);
-  }
-}
+     if(!audio) return; // stop the function from running altogether
+     audio.currentTime = 0; // rewind to start
+     audio.play();
+     key.classList.add('--playing');
+   }
 
-function pressSoundClip(key) {
-  const keyCode = key.keyCode;
-  return keyCode;
-}
+   function removeTransition(e) {
+     if (e.propertyName !== 'transform') return; // skip it's not a transform
+     this.classList.remove('--playing');
+   }
 
-function clickSoundClip(key) {
-  const keyCode = key.path[1].getAttribute("data-key");
-  return keyCode;
-}
+   const keys = document.querySelectorAll('.key-container');
+   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
-function removeClass(event) {
-  if (event.propertyName !== "transform") {
-    return;
-  } else {
-    event.target.classList.remove("--playing");
-  }
-}
-
-const keypad = Array.from(document.querySelectorAll(".key-container"));
-keypad.forEach(function (key) {
-  return key.addEventListener("transitionend", removeClass);
-});
-
-// Add an event listener to the entire window that listens for a keypress or click
-window.addEventListener("keydown", function (key) {
-  const type = "press";
-  playSound(key, type);
-});
-
-window.addEventListener("click", function (key) {
-  const type = "click";
-  playSound(key, type);
-});
-
+   window.addEventListener('keydown', playSound);
 </script>
 
 </body>

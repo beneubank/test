@@ -249,7 +249,7 @@
   </div>
 
   <div class="row">
-    <div data-key="90" class="key-container">
+    <div id="90" data-key="90" class="key-container" >
       <kbd class="sound-key">Z</kbd>
       <span class="sound-description">Okay!</span>
     </div>
@@ -303,9 +303,9 @@
  *
  */
 
-   function playSound(e) {
-     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-     const key = document.querySelector(`div.key-container[data-key="${e.keyCode}"]`);
+   function playSound(keyCode) {
+     const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+     const key = document.querySelector(`div.key-container[data-key="${keyCode}"]`);
 
      if(!audio) return; // stop the function from running altogether
      audio.currentTime = 0; // rewind to start
@@ -318,10 +318,17 @@
      this.classList.remove('--playing');
    }
 
+  // First we check if you support touch, otherwise it's click:
+  var touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
    const keys = document.querySelectorAll('.key-container');
-   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+   keys.forEach(function(key){
+       key.addEventListener(touchEvent, function(){playSound(key.getAttribute('data-key'))});
+       key.addEventListener('transitionend', removeTransition);
+    });
 
-   window.addEventListener('keydown', playSound);
+   window.addEventListener('keydown', function(e){playSound(e.keyCode)});
+
+
 </script>
 
 </body>
